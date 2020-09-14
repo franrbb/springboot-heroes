@@ -7,5 +7,7 @@ import com.springboot.heroes.app.models.entity.Heroe;
 public interface IHeroeService {
 	
 	public List<Heroe> listaHeroes();
+	
+	public Heroe buscarHeroe(Long idHeroe);
 
 }

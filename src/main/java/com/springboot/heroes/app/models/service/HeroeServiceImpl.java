@@ -19,4 +19,9 @@ public class HeroeServiceImpl implements IHeroeService {
 		return heroeDao.findAll();
 	}
 
+	@Override
+	public Heroe buscarHeroe(Long idHeroe) {
+		return heroeDao.findById(idHeroe).orElse(null);
+	}
+
 }

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import com.springboot.heroes.app.models.entity.Heroe;
 import com.springboot.heroes.app.models.service.IHeroeService;
 
 @Controller
@@ -31,6 +33,18 @@ public class HeroeController {
 		model.addAttribute("heroes", heroeService.listaHeroes());
 		
 		return "heroes";
+	}
+	
+	@GetMapping("/heroe/{id}")
+	public String heroe(@PathVariable(value = "id")Long id, Heroe heroe, Model model) {
+		
+		if(id > 0) {
+			heroe = heroeService.buscarHeroe(id);
+		}
+		
+		model.addAttribute("heroe", heroe);
+		
+		return "verHeroe";
 	}
 	
 	@GetMapping("/about")

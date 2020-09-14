@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+</head>
+<body>
+	<header th:replace="layout :: header"></header>
+	
+	<div class="container main-container">
+		<h1 th:text="${heroe.nombre}"> <small th:text="${#dates.format(heroe.aparicion, 'dd/MM/yyyy')}"></small></h1>
+		<hr>
+		<div class="row">
+		  <div class="col-md-4">
+		    <img class="img-fluid" th:src="@{/img-heroes/} + ${heroe.foto}" th:alt="@{/img-heroes} + ${heroe.foto}">
+		    <br><br>
+		    <a th:href="@{/heroes}" class="btn btn-outline-primary btn-block">Regresar</a>
+		  </div>
+		  <div class="col-md-8">
+		    <h3 th:text="${heroe.nombre}"></h3>
+		    <hr>
+		    <p th:text="${heroe.descripcion}"></p>
+		    <div>
+		      <img th:if="${heroe.casa == 'Marvel'}" th:src="@{/img-heroes/marvel.jpg}" th:alt="@{/img-heroes/marvel.jpg}">
+		      <img th:if="${heroe.casa == 'DC'}" th:src="@{/img-heroes/dc.png}" th:alt="@{/img-heroes/dcl.png}">
+		    </div>
+		  </div>
+		</div>
+	</div>
+	
+	<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
