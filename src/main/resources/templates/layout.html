@@ -19,7 +19,7 @@
 		
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-		      <li class="nav-item active">
+		      <li class="nav-item">
 		        <a class="nav-link" th:href="@{/home}">Home</a>
 		      </li>
 		      <li class="nav-item">
@@ -29,8 +29,8 @@
 		        <a class="nav-link" th:href="@{/about}">About</a>
 		      </li>
 		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		    <form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="get" th:object="${search}">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" th:field="*{nombre}">
 		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 		    </form>
 		  </div>

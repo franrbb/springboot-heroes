@@ -1,8 +1,11 @@
 package com.springboot.heroes.app.controllers;
 
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +48,32 @@ public class HeroeController {
 		model.addAttribute("heroe", heroe);
 		
 		return "verHeroe";
+	}
+	
+	@GetMapping("/search")
+	public String buscar(@ModelAttribute("search") Heroe heroe, Model model) {
+		
+		Heroe heroeSearch = new Heroe();
+		heroeSearch.reset();
+		
+		ExampleMatcher matcher = ExampleMatcher.
+				// where descripcion like '%?%'
+				matching().withMatcher("nombre", ExampleMatcher.GenericPropertyMatchers.contains());
+		
+		Example<Heroe> example = Example.of(heroe, matcher);
+		List<Heroe> heroes = heroeService.buscarByExample(example);
+		
+		model.addAttribute("heroes", heroes);
+		model.addAttribute("search",heroeSearch);
+		
+		return "heroes";
+	}
+	
+	@ModelAttribute
+	public void setGenericos(Model model) {
+		Heroe heroeSearch = new Heroe();
+		heroeSearch.reset();
+		model.addAttribute("search",heroeSearch);
 	}
 	
 	@GetMapping("/about")

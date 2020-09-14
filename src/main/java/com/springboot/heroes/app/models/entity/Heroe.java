@@ -72,5 +72,9 @@ public class Heroe {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
+	
+	public void reset() {
+		this.foto=null;
+	}
 
 }
