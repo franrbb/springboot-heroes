@@ -19,7 +19,7 @@ public class Heroe {
 	private String descripcion;
 	private String casa;
 	private Date aparicion;
-	private String imagen;
+	private String foto;
 
 	public Long getId() {
 		return id;
@@ -61,12 +61,12 @@ public class Heroe {
 		this.aparicion = aparicion;
 	}
 
-	public String getImagen() {
-		return imagen;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 }
